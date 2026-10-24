@@ -1,6 +1,10 @@
 <div align="center">
 
+<a href="https://alokxyz1112.github.io"><img src="assets/photo-round.png" alt="Alok Yadav" width="160" /></a>
+
 # Hi, I'm Alok Yadav 👋
+
+<a href="https://alokxyz1112.github.io"><img src="https://img.shields.io/badge/Website-alokxyz1112.github.io-e11d48?style=flat" alt="Website" /></a>
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Biotech+student+who+likes+building+things;Building+Hobee+with+Flutter;Learning+bioinformatics+with+Python;Working+on+my+startup" alt="Typing intro" />
 
@@ -31,9 +35,9 @@ I'm a biotech student who likes building things. Most of my time goes into two t
 
 ## 🔭 What I'm working on
 
-- **[Hobee](https://github.com/Alokxyz1112/hobee)** — my Reddit gallery app for Android.
-- **My startup** — early days, building it one step at a time.
-- **Bioinformatics** — working through *Mastering Python for Bioinformatics* ([my fork of biofx_python](https://github.com/Alokxyz1112/biofx_python)).
+- **[Hobee](https://github.com/Alokxyz1112/hobee)**: my Reddit gallery app for Android.
+- **My startup**: it's early days, and I'm building it one step at a time.
+- **Bioinformatics**: working through *Mastering Python for Bioinformatics* ([my fork of biofx_python](https://github.com/Alokxyz1112/biofx_python)).
 
 ## 🛠️ Tools I use
 
