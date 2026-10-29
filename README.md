@@ -53,8 +53,6 @@ Lately I've been fixing small doc bugs in Flutter and Dart. Nothing huge, just t
 
 I mostly build with Kotlin and Jetpack Compose, Flutter and Dart, Firebase, Cloudflare Workers and Vercel. Python for the bio stuff.
 
-<!-- SNAKE (enable once the output branch exists)
 <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Alokxyz1112/Alokxyz1112/output/snake-dark.svg"><img src="https://raw.githubusercontent.com/Alokxyz1112/Alokxyz1112/output/snake-light.svg" width="100%" alt="My contribution graph, slowly eaten by a snake" /></picture>
--->
 
 <sub>[alokxyz1112.github.io](https://alokxyz1112.github.io) &nbsp; · &nbsp; [vedrino.website](https://vedrino.website)</sub>
