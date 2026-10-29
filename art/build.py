@@ -35,16 +35,19 @@ def T(s, x, y, size, k="serif", fill="var(--ink)", track=0, anchor="start", extr
 # v3: no paper panels. Art sits on GitHub's own background; ink and one amber accent only.
 # Palette: warm paper and ink, one burnt amber accent. Dark mode is the same palette inverted.
 THEMES = {"light": dict(ink="#141414", muted="#6B655B", faint="#D9D3C7", paper="#F4F1EA"),
-          "dark":  dict(ink="#EDE8DC", muted="#A39E93", faint="#34312C", paper="#121212")}
+          "dark":  dict(ink="#E8E2D4", muted="#9C968A", faint="#3A352E", paper="#18160F", acc="#D9893F", border="#2E2A24")}
 ACC = "#C8772E"
 PAD = 28
 def wrap(w, h, body, th, css=""):
     t = THEMES[th]
     w, h = w + 2*PAD, h + 2*PAD
+    dp = 24 if th == "dark" else 0
+    panel = (f'<rect x="0.5" y="0.5" width="{w+2*dp-1}" height="{h+2*dp-1}" rx="6" fill="{t["paper"]}" stroke="{t["border"]}"/>' if dp else "")
+    w, h = w + 2*dp, h + 2*dp
     defs = "".join(f'<path id="{i}" d="{d}"/>' for i, d in GLYPHS.items()); GLYPHS.clear()
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">'
-            f'<style>svg{{--ink:{t["ink"]};--muted:{t["muted"]};--faint:{t["faint"]};--paper:{t["paper"]};--acc:{ACC}}}{css}</style>'
-            f'<defs>{defs}</defs><g transform="translate({PAD} {PAD})">{body}</g></svg>')
+            f'<style>svg{{--ink:{t["ink"]};--muted:{t["muted"]};--faint:{t["faint"]};--paper:{t["paper"]};--acc:{t.get("acc", ACC)}}}{css}</style>'
+            f'<defs>{defs}</defs>{panel}<g transform="translate({PAD+dp} {PAD+dp})">{body}</g></svg>')
 
 # 1. Masthead
 def masthead(th):
@@ -224,7 +227,7 @@ def stack(th):
     for n, (name, (ink, acc)) in enumerate(ICONS.items()):
         col, row = n % 5, n // 5
         x, y = col * 120 + 36, 44 + row * 108
-        b.append(f'<g class="i" style="animation-delay:{n*0.12:.2f}s"><g transform="translate({x} {y})" fill="none" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">'
+        b.append(f'<g class="i" style="animation-delay:{n*0.12:.2f}s"><g transform="translate({x} {y})" fill="none" stroke-width="{1.85 if th == "dark" else 1.5}" stroke-linejoin="round" stroke-linecap="round">'
                  f'<g stroke="var(--ink)">{ink}</g><g stroke="var(--acc)">{acc}</g></g>'
                  + T(name.upper(), x + 24, y + 72, 10, "mono", "var(--muted)", 1.6, "middle") + '</g>')
     return wrap(600, 228, "".join(b), th, css)
@@ -239,8 +242,8 @@ GLYPHS16 = {
 }
 def glyph(th, k):
     t = THEMES[th]
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><g fill="none" stroke="{t["ink"]}" stroke-width="1.2" '
-            f'stroke-linecap="round" stroke-linejoin="round">{GLYPHS16[k].replace("var(--acc)", ACC)}</g></svg>')
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><g fill="none" stroke="{t["ink"]}" stroke-width="{1.4 if th == "dark" else 1.2}" '
+            f'stroke-linecap="round" stroke-linejoin="round">{GLYPHS16[k].replace("var(--acc)", t.get("acc", ACC))}</g></svg>')
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets")
 for th in THEMES:
     open(f"{out}/masthead-{th}.svg", "w").write(masthead(th))
